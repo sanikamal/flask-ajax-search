@@ -1,51 +1,58 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <h2 class="text-info text-center">Manage <b>Students </b></h2>
 
 
-{% block title %} Home {% endblock %}
-
-{% block content %}
-
-    <div class="container">
-        <h1 class="text-center text-info">Student Data</h1>
-        <div class="container mb-3">
-            <div class="row">
-                <div class="col-md-8">
-                    <h5 class="float-end">Search All Fields</h5>
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">x</span>
+                            </button> {{ message }}
                 </div>
-                <div class="col-md-4">
-                    <input type="text" name="search_text" id="search_text" class="form-control"
-                           placeholder="Search all fields">
+                {% endfor %} {% endif %} {% endwith %}
+
+                <div class="container mb-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {#
+                            <p>Search</p>#}
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search">
+                        </div>
+                    </div>
                 </div>
+                <table class="table table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Course</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+                        {% for row in students %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.first_name }}</td>
+                            <td>{{ row.last_name }}</td>
+                            <td>{{ row.email }}</td>
+                            <td>{{ row.phone }}</td>
+                            <td>{{ row.course }}</td>
+                            <td><a href="/edit/{{ row.id }}" class="btn btn-warning btn-xs">Edit</a></td>
+                        </tr>{% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Class</th>
-                 <th scope="col">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for row in students %}
-                <tr>
-                    <td>{{ row.first_name }}</td>
-                    <td>{{ row.last_name }}</td>
-                    <td>{{ row.email }}</td>
-                    <td>{{ row.class }}</td>
-                <td>
-                            <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
-
-
-
-                        </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
-
+</div>
 {% endblock %}
