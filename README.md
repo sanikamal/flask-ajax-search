@@ -6,7 +6,7 @@
 Execute the following commands:
 
     $ git clone https://github.com/sanikamal/flask-ajax-search.git
-    $ cd flask-ajax-search
+    $ cd ./flask-ajax-search
     $ virtualenv --python=/usr/bin/python3 venv
     $ source ./venv/bin/activate
     $ pip3 install -r requirements.txt
