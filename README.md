@@ -5,17 +5,17 @@
 
 Execute the following commands:
 
-    $ git clone https://github.com/sanikamal/flask-ajax-search.git
-    $ cd ./flask-ajax-search
-    $ virtualenv --python=/usr/bin/python3 venv
-    $ source ./venv/bin/activate
-    $ pip3 install -r requirements.txt
+    git clone https://github.com/sanikamal/flask-ajax-search.git
+    cd flask-ajax-search
+    virtualenv venv
+    venv\Scripts\activate
+    pip install -r requirements.txt
 
 ## Running
 
 Execute the following command:
 
-    $ python3 app.py
+    python app.py
 
 Open at your Web browser the following link http://127.0.0.1:5000
 
