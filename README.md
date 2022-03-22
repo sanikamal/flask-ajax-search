@@ -1,4 +1,4 @@
-# Live Data Search using Flask, MySql and Ajax
+# Live Data Search using Flask, MySQL and Ajax
 
 
 ## Setup
